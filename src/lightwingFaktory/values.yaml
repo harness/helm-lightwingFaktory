@@ -24,7 +24,7 @@ image:
 
 faktory:
   password:
-    name: lw-secrets
+    name: lwd-secrets
     key: FAKTORY_PASSWORD
 
 nameOverride: ""
