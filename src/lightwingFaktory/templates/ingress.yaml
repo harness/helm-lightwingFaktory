@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: lw-faktory
+  name: lwd-faktory
   annotations:
     nginx.ingress.kubernetes.io/configuration-snippet: proxy_set_header X-Script-Name /lw/faktory;
 spec:
@@ -12,7 +12,7 @@ spec:
         paths:
           - backend:
               service:
-                name: lw-faktory
+                name: lwd-faktory
                 port:
                   number: {{ .Values.service.dashboard.port }}
             path: /lw/faktory

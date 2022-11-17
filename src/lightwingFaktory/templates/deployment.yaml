@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: lw-faktory
+  name: lwd-faktory
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "lw-faktory.labels" . | nindent 4 }}
+    {{- include "lwd-faktory.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -13,7 +13,7 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      {{- include "lw-faktory.selectorLabels" . | nindent 6 }}
+      {{- include "lwd-faktory.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -21,18 +21,18 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        app: lw-faktory
-        {{- include "lw-faktory.selectorLabels" . | nindent 8 }}
+        app: lwd-faktory
+        {{- include "lwd-faktory.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "lw-faktory.serviceAccountName" . }}
+      serviceAccountName: {{ include "lwd-faktory.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: lw-faktory
+        - name: lwd-faktory
           args:
           - -w
           - :7420
@@ -61,13 +61,13 @@ spec:
                   name: {{ .Values.faktory.password.name }}
                   key: {{ .Values.faktory.password.key }}
           volumeMounts:
-          - name: lw-faktory-mount
+          - name: lwd-faktory-mount
             mountPath: /var/lib/faktory
       restartPolicy: Always
       volumes:
-      - name: lw-faktory-mount
+      - name: lwd-faktory-mount
         persistentVolumeClaim:
-          claimName: lw-faktory
+          claimName: lwd-faktory
           readOnly: false
       affinity:
         podAntiAffinity:
@@ -77,7 +77,7 @@ spec:
               - key: app
                 operator: In
                 values:
-                - lw-faktory
+                - lwd-faktory
             topologyKey: "kubernetes.io/hostname"
       {{- with .Values.nodeSelector }}
       nodeSelector:
