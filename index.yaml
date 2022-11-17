@@ -43,4 +43,19 @@ entries:
     urls:
     - https://github.com/harness/helm-lightwingFaktory/releases/download/lw-faktory-0.1.2/lw-faktory-0.1.2.tgz
     version: 0.1.2
-generated: "2022-11-17T02:47:08.602793281Z"
+  lwd-faktory:
+  - apiVersion: v2
+    appVersion: 1.773.0
+    created: "2022-11-17T07:31:40.10611359Z"
+    dependencies:
+    - name: harness-common
+      repository: https://harness.github.io/helm-common
+      version: 1.x.x
+    description: A Helm chart for Kubernetes
+    digest: 7a082320cedace12a20418cd450e031372d20d94efb09a19eb463c6c719c22cf
+    name: lwd-faktory
+    type: application
+    urls:
+    - https://github.com/harness/helm-lightwingFaktory/releases/download/lwd-faktory-0.1.5/lwd-faktory-0.1.5.tgz
+    version: 0.1.5
+generated: "2022-11-17T07:31:40.106126991Z"
