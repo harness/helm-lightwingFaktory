@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "lw-faktory.name" -}}
+{{- define "lwd-faktory.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "lw-faktory.fullname" -}}
+{{- define "lwd-faktory.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "lw-faktory.chart" -}}
+{{- define "lwd-faktory.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "lw-faktory.labels" -}}
-helm.sh/chart: {{ include "lw-faktory.chart" . }}
-{{ include "lw-faktory.selectorLabels" . }}
+{{- define "lwd-faktory.labels" -}}
+helm.sh/chart: {{ include "lwd-faktory.chart" . }}
+{{ include "lwd-faktory.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,23 +45,23 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "lw-faktory.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "lw-faktory.name" . }}
+{{- define "lwd-faktory.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "lwd-faktory.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "lw-faktory.serviceAccountName" -}}
+{{- define "lwd-faktory.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "lw-faktory.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "lwd-faktory.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
 
-{{- define "lw-faktory.deploymentEnv" -}}
+{{- define "lwd-faktory.deploymentEnv" -}}
 - name: DB_PASSWORD
   valueFrom:
     secretKeyRef:
