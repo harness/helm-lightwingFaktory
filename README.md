@@ -1,6 +1,6 @@
 # lwd-faktory
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.773.0](https://img.shields.io/badge/AppVersion-1.773.0-informational?style=flat-square)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.773.0](https://img.shields.io/badge/AppVersion-1.773.0-informational?style=flat-square)
 
 A Helm chart for Kubernetes
 
@@ -40,7 +40,7 @@ A Helm chart for Kubernetes
 | persistentVolume.storage.models | string | `"20Gi"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| replicaCount | int | `2` |  |
+| replicaCount | int | `1` |  |
 | resources.limits.cpu | int | `2` |  |
 | resources.limits.memory | string | `"4Gi"` |  |
 | resources.requests.cpu | int | `2` |  |
